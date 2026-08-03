@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">report_2026-08-02_02-47-12.html</title>
+      <style type="text/css">body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  /* do not increase min-width as some may use split screens */
+  min-width: 800px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+}
+
+h2 {
+  font-size: 16px;
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+a {
+  color: #999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+#environment td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  vertical-align: top;
+}
+#environment tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+#environment ul {
+  margin: 0;
+  padding: 0 20px;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed,
+.passed .col-result {
+  color: green;
+}
+
+span.skipped,
+span.xfailed,
+span.rerun,
+.skipped .col-result,
+.xfailed .col-result,
+.rerun .col-result {
+  color: orange;
+}
+
+span.error,
+span.failed,
+span.xpassed,
+.error .col-result,
+.failed .col-result,
+.xpassed .col-result {
+  color: red;
+}
+
+.col-links__extra {
+  margin-right: 3px;
+}
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+#results-table {
+  border: 1px solid #e6e6e6;
+  color: #999;
+  font-size: 12px;
+  width: 100%;
+}
+#results-table th,
+#results-table td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+#results-table th {
+  font-weight: bold;
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+.logwrapper {
+  max-height: 230px;
+  overflow-y: scroll;
+  background-color: #e6e6e6;
+}
+.logwrapper.expanded {
+  max-height: none;
+}
+.logwrapper.expanded .logexpander:after {
+  content: "collapse [-]";
+}
+.logwrapper .logexpander {
+  z-index: 1;
+  position: sticky;
+  top: 10px;
+  width: max-content;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin: 10px 0 10px calc(100% - 80px);
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+.logwrapper .logexpander:after {
+  content: "expand [+]";
+}
+.logwrapper .logexpander:hover {
+  color: #000;
+  border-color: #000;
+}
+.logwrapper .log {
+  min-height: 40px;
+  position: relative;
+  top: -50px;
+  height: calc(100% + 50px);
+  border: 1px solid #e6e6e6;
+  color: black;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  padding: 5px;
+  padding-right: 80px;
+  white-space: pre-wrap;
+}
+
+div.media {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin: 0 5px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.media-container {
+  display: grid;
+  grid-template-columns: 25px auto 25px;
+  align-items: center;
+  flex: 1 1;
+  overflow: hidden;
+  height: 200px;
+}
+
+.media-container--fullscreen {
+  grid-template-columns: 0px auto 0px;
+}
+
+.media-container__nav--right,
+.media-container__nav--left {
+  text-align: center;
+  cursor: pointer;
+}
+
+.media-container__viewport {
+  cursor: pointer;
+  text-align: center;
+  height: inherit;
+}
+.media-container__viewport img,
+.media-container__viewport video {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.media__name,
+.media__counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 25px;
+  align-items: center;
+}
+
+.collapsible td:not(.col-links) {
+  cursor: pointer;
+}
+.collapsible td:not(.col-links):hover::after {
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.col-result {
+  width: 130px;
+}
+.col-result:hover::after {
+  content: " (hide details)";
+}
+
+.col-result.collapsed:hover::after {
+  content: " (show details)";
+}
+
+#environment-header h2:hover::after {
+  content: " (hide details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#environment-header.collapsed h2:hover::after {
+  content: " (show details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+  cursor: pointer;
+}
+.sortable.desc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: -12.5px;
+  border: 10px solid #4caf50;
+  border-bottom: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.sortable.asc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: 12.5px;
+  border: 10px solid #4caf50;
+  border-top: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.hidden, .summary__reload__button.hidden {
+  display: none;
+}
+
+.summary__data {
+  flex: 0 0 550px;
+}
+.summary__reload {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}
+.summary__reload__button {
+  flex: 0 0 300px;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  background-color: #4caf50;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.summary__reload__button:hover {
+  background-color: #46a049;
+}
+.summary__spacer {
+  flex: 0 0 550px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters,
+.collapse {
+  display: flex;
+  align-items: center;
+}
+.filters button,
+.collapse button {
+  color: #999;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.filters button:hover,
+.collapse button:hover {
+  color: #ccc;
+}
+
+.filter__label {
+  margin-right: 10px;
+}
+
+      </style>
+    
+  </head>
+  <body>
+    <h1 id="title">report_2026-08-02_02-47-12.html</h1>
+    <p>Report generated on 02-Aug-2026 at 02:47:27 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.2.0</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="4">No results found. Check the filters.</td>
+        </tr>
+      </tbody>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="4">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left">&lt;</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">&gt;</div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+        </div>
+        <p class="run-count">4 tests took 00:00:15.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" >
+            <span class="failed">1 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" >
+            <span class="passed">3 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled>
+            <span class="error">0 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled>
+            <span class="rerun">0 Reruns</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="retried" disabled>
+            <span class="retried">0 Retried,</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+      </div>
+      <div class="additional-summary postfix">
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+    </table>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.11.2&#34;, &#34;Platform&#34;: &#34;macOS-26.2-arm64-arm-64bit&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;9.1.1&#34;, &#34;pluggy&#34;: &#34;1.6.0&#34;}, &#34;Plugins&#34;: {&#34;allure-pytest&#34;: &#34;2.16.0&#34;, &#34;xdist&#34;: &#34;3.8.0&#34;, &#34;asyncio&#34;: &#34;1.4.0&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;, &#34;html&#34;: &#34;4.2.0&#34;, &#34;base-url&#34;: &#34;2.1.0&#34;, &#34;playwright&#34;: &#34;0.8.0&#34;}, &#34;Base URL&#34;: &#34;&#34;}, &#34;tests&#34;: {&#34;day16/test_sample.py::test_url[chromium]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;day16/test_sample.py::test_url[chromium]&#34;, &#34;duration&#34;: &#34;00:00:04&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;day16/test_sample.py::test_url[chromium]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:04&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;day16/test_sample.py::test_title[chromium]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;day16/test_sample.py::test_title[chromium]&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;day16/test_sample.py::test_title[chromium]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;day16/test_sample.py::test_google_search[chromium]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;day16/test_sample.py::test_google_search[chromium]&#34;, &#34;duration&#34;: &#34;00:00:01&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;day16/test_sample.py::test_google_search[chromium]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:01&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;day16/test_sample.py::test_bing_search[chromium]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Image&#34;, &#34;format_type&#34;: &#34;image&#34;, &#34;content&#34;: &#34;screenshots/day16-test-sample-py-test-bing-search-chromium.png&#34;, &#34;mime_type&#34;: &#34;image/png&#34;, &#34;extension&#34;: &#34;png&#34;}, {&#34;name&#34;: &#34;Image&#34;, &#34;format_type&#34;: &#34;image&#34;, &#34;content&#34;: &#34;screenshots/day16-test-sample-py-test-bing-search-chromium.png&#34;, &#34;mime_type&#34;: &#34;image/png&#34;, &#34;extension&#34;: &#34;png&#34;}], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;day16/test_sample.py::test_bing_search[chromium]&#34;, &#34;duration&#34;: &#34;00:00:06&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;day16/test_sample.py::test_bing_search[chromium]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:06&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;page = &amp;lt;Page url=&amp;#x27;https://www.bing.com/&amp;#x27;&amp;gt;\n\n    def test_bing_search(page:Page):\n        page.goto(&amp;quot;https://www.bing.com/&amp;quot;)\n&amp;gt;       expect(page).to_have_title(&amp;quot;Bing123&amp;quot;)  #intentionally failing test to demonstrate screenshot and video capture on failure\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       AssertionError: Page title expected to be &amp;#x27;Bing123&amp;#x27;\nE       Actual value: Search - Microsoft Bing \nE       Call log:\nE         - Expect &amp;quot;to_have_title&amp;quot; with timeout 5000ms\nE           12 \u00d7 unexpected value &amp;quot;Search - Microsoft Bing&amp;quot;\nE       \nE       Aria snapshot:\nE       - dialog:\nE         - paragraph\nE         - text: Microsoft and our third-party vendors use cookies and similar technologies to deliver, maintain and improve our services and ads. If you agree, we will use this data for ads personalisation and associated analytics. You can select \u2018Accept\u2019 to consent to these uses, \u2018Reject\u2019 to decline these uses or click on \u2018More options\u2019 to review your options. You can change your selection under \u2018Manage Cookie Preferences\u2019 at the bottom of this page.\nE         - link &amp;quot;Privacy Statement&amp;quot;:\nE           - /url: https://go.microsoft.com/fwlink/?LinkId=521839\nE         - link &amp;quot;Accept&amp;quot;:\nE           - /url: &amp;quot;javascript: void(0)&amp;quot;\nE         - link &amp;quot;Reject&amp;quot;:\nE           - /url: &amp;quot;javascript: void(0)&amp;quot;\nE         - link &amp;quot;More Options&amp;quot;:\nE           - /url: &amp;quot;javascript: void(0)&amp;quot;\nE       - main:\nE         - heading &amp;quot;Microsoft Logo Image&amp;quot; [level=1]:\nE           - img &amp;quot;Microsoft Logo Image&amp;quot;\nE         - navigation:\nE           - menubar:\nE             - menuitem &amp;quot;Copilot&amp;quot;:\nE               - link &amp;quot;Copilot&amp;quot;:\nE                 - /url: /chat?FORM=hpcodx&amp;amp;intent=bing\nE             - menuitem &amp;quot;Images&amp;quot;:\nE               - link &amp;quot;Images&amp;quot;:\nE                 - /url: /images?FORM=Z9LH\nE             - menuitem &amp;quot;Videos&amp;quot;:\nE               - link &amp;quot;Videos&amp;quot;:\nE                 - /url: /videos?FORM=Z9LH1\nE             - menuitem &amp;quot;Maps&amp;quot;:\nE               - link &amp;quot;Maps&amp;quot;:\nE                 - /url: /maps?FORM=Z9LH2\nE             - menuitem &amp;quot;News&amp;quot;:\nE               - link &amp;quot;News&amp;quot;:\nE                 - /url: /news/search?FORM=Z9LH3\nE             - menuitem &amp;quot;. . . More&amp;quot;:\nE               - text: . . .\nE               - button &amp;quot;More&amp;quot;\nE         - link &amp;quot;Svenska&amp;quot;:\nE           - /url: /?setlang=sv&amp;amp;cc=se&amp;amp;cc=SE\nE         - complementary &amp;quot;Account Rewards and Preferences&amp;quot;:\nE           - link &amp;quot;Sign in Sign in&amp;quot;:\nE             - /url: javascript:void(0)\nE             - text: Sign in\nE           - button &amp;quot;Microsoft Rewards&amp;quot;:\nE             - text: Rewards\nE             - img\nE           - button &amp;quot;Mobile&amp;quot;:\nE             - text: Mobile\nE             - img\nE           - button &amp;quot;Settings and quick links&amp;quot;\nE         - search:\nE           - combobox &amp;quot;Enter your search here - Search suggestions will show as you type&amp;quot;:\nE             - status\nE           - button &amp;quot;Search using voice&amp;quot;:\nE             - img\nE           - button &amp;quot;Search using an image&amp;quot;\nE           - link &amp;quot;Open Copilot&amp;quot;:\nE             - /url: /chat?FORM=hpcodx&amp;amp;intent=bing\nE         - link &amp;quot;Create wallpaper&amp;quot;:\nE           - /url: /search?q=create wallpaper&amp;amp;filters=aimode%3A%2235%22&amp;amp;FORM=bichpw\nE         - link &amp;quot;Text creator&amp;quot;:\nE           - /url: /search?q=bing ai writing&amp;amp;FORM=btcbhp\nE       - &amp;#x27;heading &amp;quot;Image of the day: A series of lava flows spill into the ocean, Big Island, Hawaii, United States&amp;quot; [level=3]&amp;#x27;:\nE         - &amp;#x27;link &amp;quot;Image of the day: A series of lava flows spill into the ocean, Big Island, Hawaii, United States&amp;quot;&amp;#x27;:\nE           - /url: /search?q=Hawaii+Volcanoes+National+Park&amp;amp;form=hpcapt&amp;amp;filters=HpDate:&amp;quot;20260801_0700&amp;quot;+mgzv3configlist:&amp;quot;BingQA_Encyclopedia_Layout&amp;quot;\nE           - text: A series of lava flows spill into the ocean, Big Island, Hawaii, United States\nE       - text: \u00a9 Ken McCurdy/Getty Images\nE       - list:\nE         - listitem:\nE           - button &amp;quot;Download this image. Use of this image is restricted to wallpaper only.&amp;quot;\nE       - link &amp;quot;Info&amp;quot;:\nE         - /url: /search?q=Hawaii+Volcanoes+National+Park&amp;amp;form=hpcapt&amp;amp;filters=HpDate:&amp;quot;20260801_0700&amp;quot;+mgzv3configlist:&amp;quot;BingQA_Encyclopedia_Layout&amp;quot;\nE         - heading &amp;quot;Info&amp;quot; [level=2]\nE       - status\nE       - button &amp;quot;Previous image&amp;quot;\nE       - button &amp;quot;Next image&amp;quot; [disabled]\nE       - button &amp;quot;Feedback&amp;quot;:\nE         - img\nE         - text: Feedback\nE       - region &amp;quot;Trending on Bing&amp;quot;:\nE         - status\nE         - button &amp;quot;Toggle feed area position&amp;quot; [expanded]\nE         - button &amp;quot;Previous news&amp;quot; [disabled]\nE         - button &amp;quot;More news&amp;quot;\nE         - list:\nE           - listitem:\nE             - list:\nE               - listitem:\nE                 - link &amp;quot;F\u00f6rsvarsindustri hotad av skogsbrand \u00a9 Dagens PS&amp;quot;:\nE                   - /url: /search?q=F%c3%b6rsvarsindustri+hotad+av+skogsbrand&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_25475A7924F28283F4320EA881A3E6EA%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%220%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;F\u00f6rsvarsindustri hotad av skogsbrand&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Dagens PS&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/f\u00f6rsvarsindustri-hotad-av-skogsbrand/ar-AA29cU6e?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Finland: \\&amp;quot;Nu b\u00f6rjar det se j\u00e4kligt bra ut\\&amp;quot; \u00a9 Dagens PS&amp;quot;&amp;#x27;:\nE                   - /url: /search?q=Finland%3a+%22Nu+b%c3%b6rjar+det+se+j%c3%a4kligt+bra+ut%22&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_BB3EFB6FBE176F4FBEC6DA533B89CD34%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%221%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - &amp;#x27;heading &amp;quot;Finland: \\&amp;quot;Nu b\u00f6rjar det se j\u00e4kligt bra ut\\&amp;quot;&amp;quot; [level=2]&amp;#x27;\nE                   - img &amp;quot;\u00a9 Dagens PS&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/ekonomi/ekonomi/finland-nu-b\u00f6rjar-det-se-j\u00e4kligt-bra-ut/ar-AA29d885?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Spanien har installerat havsbarri\u00e4r mot Marocko \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;:\nE                   - /url: /search?q=Spanien+har+installerat+havsbarri%c3%a4r+mot+Marocko&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_40D6F99EF5EA9751BBE009D05B1C76F9%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%222%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Spanien har installerat havsbarri\u00e4r mot Marocko&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/spanien-har-installerat-havsbarri\u00e4r-mot-marocko/ar-AA29diab?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Hizbollahmedlemmar d\u00f6dade i israelisk attack \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;:\nE                   - /url: /search?q=Hizbollahmedlemmar+d%c3%b6dade+i+israelisk+attack&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_5B4983B77A00D2809F91D437046B8F57%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%223%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Hizbollahmedlemmar d\u00f6dade i israelisk attack&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/hizbollahmedlemmar-d\u00f6dade-i-israelisk-attack/ar-AA29d7St?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Sopranos-sk\u00e5despelaren Vincent Pastore \u00e4r d\u00f6d \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;:\nE                   - /url: /search?q=Sopranos-sk%c3%a5despelaren+Vincent+Pastore+%c3%a4r+d%c3%b6d&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_2016DE91CF6D05DDF0D6191F239403C8%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%224%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Sopranos-sk\u00e5despelaren Vincent Pastore \u00e4r d\u00f6d&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/noje/k\u00e4ndisar/sopranos-sk\u00e5despelaren-vincent-pastore-\u00e4r-d\u00f6d/ar-AA29dgkM?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;H\u00e4r r\u00e4cker inte l\u00f6nen f\u00f6r unga som vill k\u00f6pa en etta \u00a9 Nyheter24&amp;quot;:\nE                   - /url: /search?q=H%c3%a4r+r%c3%a4cker+inte+l%c3%b6nen+f%c3%b6r+unga+som+vill+k%c3%b6pa+en+etta&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_9EA5CF4D4D797ADC4BAF63FE02A56743%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%225%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;H\u00e4r r\u00e4cker inte l\u00f6nen f\u00f6r unga som vill k\u00f6pa en etta&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Nyheter24&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/ekonomi/l\u00e5n/h\u00e4r-r\u00e4cker-inte-l\u00f6nen-f\u00f6r-unga-som-vill-k\u00f6pa-en-etta/ar-AA29cB5f?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Svenskt ras i golfmajorn \u2013 doldis leder \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;:\nE                   - /url: /search?q=Svenskt+ras+i+golfmajorn+%e2%80%93+doldis+leder&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_2224F24B7C242FA87FFACDD14021BECF%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%226%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Svenskt ras i golfmajorn \u2013 doldis leder&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/sport/golf/svenskt-ras-i-golfmajorn-doldis-leder/ar-AA29d5mO?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Uppgift: G\u00e4ngtopp gripen i Spanien \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;&amp;#x27;:\nE                   - /url: /search?q=Uppgift%3a+G%c3%a4ngtopp+gripen+i+Spanien&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_C532E16709AF036E9AC180B6908A9CCE%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%227%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - &amp;#x27;heading &amp;quot;Uppgift: G\u00e4ngtopp gripen i Spanien&amp;quot; [level=2]&amp;#x27;\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/uppgift-g\u00e4ngtopp-gripen-i-spanien/ar-AA29cY4x?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Klara Hammarstr\u00f6ms br\u00f6llopslycka \u2013 firar med Alexander Holtz: \\&amp;quot;Helg av k\u00e4rlek\\&amp;quot; \u00a9 H\u00e4nt&amp;quot;&amp;#x27;:\nE                   - /url: /search?q=Klara+Hammarstr%c3%b6ms+br%c3%b6llopslycka+%e2%80%93+firar+med+Alexander+Holtz%3a+%22Helg+av+k%c3%a4rlek%22&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_27CE7927DC8EE2B586AB5AE496A8F6D3%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%228%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - &amp;#x27;heading &amp;quot;Klara Hammarstr\u00f6ms br\u00f6llopslycka \u2013 firar med Alexander Holtz: \\&amp;quot;Helg av k\u00e4rlek\\&amp;quot;&amp;quot; [level=2]&amp;#x27;\nE                   - img &amp;quot;\u00a9 H\u00e4nt&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/noje/allm\u00e4nt/klara-hammarstr\u00f6ms-br\u00f6llopslycka-firar-med-alexander-holtz-helg-av-k\u00e4rlek/ar-AA29db4K?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Regaliekuppen f\u00f6rbryllar: \\&amp;quot;Undrar hur de t\u00e4nkte\\&amp;quot; \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;&amp;#x27;:\nE                   - /url: /search?q=Regaliekuppen+f%c3%b6rbryllar%3a+%22Undrar+hur+de+t%c3%a4nkte%22&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_B7BEE51CC7C0C414B1329BC8F433FD01%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%229%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - &amp;#x27;heading &amp;quot;Regaliekuppen f\u00f6rbryllar: \\&amp;quot;Undrar hur de t\u00e4nkte\\&amp;quot;&amp;quot; [level=2]&amp;#x27;\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/brott/allm\u00e4nt/regaliekuppen-f\u00f6rbryllar-undrar-hur-de-t\u00e4nkte/ar-AA29c6Ir?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;VM-rallyt i Finland fick avbrytas efter krasch \u00a9 Roni Rekomaa/AP/TT&amp;quot;:\nE                   - /url: /search?q=VM-rallyt+i+Finland+fick+avbrytas+efter+krasch&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_7F2BE80F79930E0BD7AFD2ADE44C8D8B%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2210%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;VM-rallyt i Finland fick avbrytas efter krasch&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Roni Rekomaa/AP/TT&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/sport/allm\u00e4nt/vm-rallyt-i-finland-fick-avbrytas-efter-krasch/ar-AA29cLKV?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Flera skadade i bombd\u00e5d i Colombia \u00a9 Nyheter24&amp;quot;:\nE                   - /url: /search?q=Flera+skadade+i+bombd%c3%a5d+i+Colombia&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_793A423ED5FD17777A647B59EBFA1A44%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2211%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Flera skadade i bombd\u00e5d i Colombia&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Nyheter24&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/flera-skadade-i-bombd\u00e5d-i-colombia/ar-AA29cdY1?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Kursras f\u00f6r Novo Nordisk \u00a9 E55&amp;quot;:\nE                   - /url: /search?q=Kursras+f%c3%b6r+Novo+Nordisk&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_1C13DCCFFDE026D28F7EC5A3B272E679%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2212%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Kursras f\u00f6r Novo Nordisk&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 E55&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/ekonomi/allm\u00e4nt/kursras-f\u00f6r-novo-nordisk/ar-AA29cnSC?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Missr\u00e4kning f\u00f6r AIK \u2013 0\u20133-sm\u00e4ll i Kristianstad \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;:\nE                   - /url: /search?q=Missr%c3%a4kning+f%c3%b6r+AIK+%e2%80%93+0%e2%80%933-sm%c3%a4ll+i+Kristianstad&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_27552DA85ABD7D3C454418DDB92562D2%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2213%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Missr\u00e4kning f\u00f6r AIK \u2013 0\u20133-sm\u00e4ll i Kristianstad&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/sport/fotboll/missr\u00e4kning-f\u00f6r-aik-0-3-sm\u00e4ll-i-kristianstad/ar-AA29cohE?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Zelenskyjs ideliga ministerbyten: \\&amp;quot;Politisk svartsjuka\\&amp;quot; \u00a9 Nyheter24&amp;quot;&amp;#x27;:\nE                   - /url: /search?q=Zelenskyjs+ideliga+ministerbyten%3a+%22Politisk+svartsjuka%22&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_44AADEDAD1D9BE11D1A22E07CFE01B84%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2214%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - &amp;#x27;heading &amp;quot;Zelenskyjs ideliga ministerbyten: \\&amp;quot;Politisk svartsjuka\\&amp;quot;&amp;quot; [level=2]&amp;#x27;\nE                   - img &amp;quot;\u00a9 Nyheter24&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/zelenskyjs-ideliga-ministerbyten-politisk-svartsjuka/ar-AA29bM75?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Sverige v\u00e4xlar upp f\u00f6r 6G \u2013 s\u00e5 kan mobilen f\u00f6r\u00e4ndras \u00a9 Nyheter24&amp;quot;:\nE                   - /url: /search?q=Sverige+v%c3%a4xlar+upp+f%c3%b6r+6G+%e2%80%93+s%c3%a5+kan+mobilen+f%c3%b6r%c3%a4ndras&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_305B051EF66174721444B3947CCA8065%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2215%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Sverige v\u00e4xlar upp f\u00f6r 6G \u2013 s\u00e5 kan mobilen f\u00f6r\u00e4ndras&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Nyheter24&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/teknik/tech-f\u00f6retag/sverige-v\u00e4xlar-upp-f\u00f6r-6g-s\u00e5-kan-mobilen-f\u00f6r\u00e4ndras/ar-AA29bVlR?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Tre d\u00f6da i explosion vid kaf\u00e9 i Moskva \u00a9 TT Nyhetsbyr\u00e5n&amp;quot;:\nE                   - /url: /search?q=Tre+d%c3%b6da+i+explosion+vid+kaf%c3%a9+i+Moskva&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_021A09FB442F0F102B6C7498BD92625F%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2216%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Tre d\u00f6da i explosion vid kaf\u00e9 i Moskva&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 TT Nyhetsbyr\u00e5n&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/tre-d\u00f6da-i-explosion-vid-kaf\u00e9-i-moskva/ar-AA29dbvC?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Varnar f\u00f6r extremhetta i Italien \u00a9 Nyheter24&amp;quot;:\nE                   - /url: /search?q=Varnar+f%c3%b6r+extremhetta+i+Italien&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_F6F37165EF78C6B2CA03FA00217A5FF9%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2217%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Varnar f\u00f6r extremhetta i Italien&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Nyheter24&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/vader/extrema-v\u00e4derh\u00e4ndelser/varnar-f\u00f6r-extremhetta-i-italien/ar-AA29dgTk?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - link &amp;quot;Apotekare tog ut medicin p\u00e5 patienternas recept \u00a9 Nyheter24&amp;quot;:\nE                   - /url: /search?q=Apotekare+tog+ut+medicin+p%c3%a5+patienternas+recept&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_8C5C765BABB7D2F7BF4B0F7CEA947A24%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2218%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - heading &amp;quot;Apotekare tog ut medicin p\u00e5 patienternas recept&amp;quot; [level=2]\nE                   - img &amp;quot;\u00a9 Nyheter24&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/ekonomi/allm\u00e4nt/apotekare-tog-ut-medicin-p\u00e5-patienternas-recept/ar-AA29chob?ocid=TobArticle\nE                     - img\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Venezuela: Samtal med oppositionen n\u00e4sta vecka \u00a9 Miguel Medina/AP/TT&amp;quot;&amp;#x27;:\nE                   - /url: /search?q=Venezuela%3a+Samtal+med+oppositionen+n%c3%a4sta+vecka&amp;amp;efirst=0&amp;amp;ecount=50&amp;amp;filters=tnTID%3a%22TOBP2_96299A0CBE55F5FAB6F5696D59F7E212%22+tnVersion%3a%22a6949332-4501-4cab-832b-f11675c34485%22+Segment%3a%22popularnow.carousel%22+tnCol%3a%2219%22+tnOrder%3a%222c70b286-6bc0-42ee-acfc-38413f83bd17%22&amp;amp;form=HPNN01\nE                   - &amp;#x27;heading &amp;quot;Venezuela: Samtal med oppositionen n\u00e4sta vecka&amp;quot; [level=2]&amp;#x27;\nE                   - img &amp;quot;\u00a9 Miguel Medina/AP/TT&amp;quot;\nE                   - link &amp;quot;Read Article&amp;quot;:\nE                     - /url: https://www.msn.com/sv-se/nyheter/other/venezuela-samtal-med-oppositionen-n\u00e4sta-vecka/ar-AA29dQpa?ocid=TobArticle\nE                     - img\nE       - complementary:\nE         - text: DISCOVER\nE         - main:\nE           - tablist:\nE             - tab &amp;quot;Nyhetsartikel&amp;quot; [selected]\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE             - tab &amp;quot;Nyhetsartikel&amp;quot;\nE           - &amp;#x27;article &amp;quot;Europas storfloder n\u00e4stan torrlagda: \u201dChockerande\u201d&amp;quot;&amp;#x27;:\nE             - text: TT Nyhetsbyr\u00e5n 20 tim\nE             - &amp;#x27;link &amp;quot;Europas storfloder n\u00e4stan torrlagda: \u201dChockerande\u201d, TT Nyhetsbyr\u00e5n&amp;quot;&amp;#x27;:\nE               - /url: https://www.msn.com/sv-se/vader/allm%C3%A4nt/europas-storfloder-n%C3%A4stan-torrlagda-chockerande/ar-AA29aLl1\nE               - text: &amp;quot;Europas storfloder n\u00e4stan torrlagda: \u201dChockerande\u201d&amp;quot;\nE             - button &amp;quot;16 Gillar&amp;quot;\nE             - button &amp;quot;5 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Skrapade fram 100 000 kronor i TV4 \u2013 f\u00e5r inte beh\u00e5lla vinsten&amp;quot;:\nE             - text: Nyheter24 2 d\nE             - link &amp;quot;Skrapade fram 100 000 kronor i TV4 \u2013 f\u00e5r inte beh\u00e5lla vinsten, Nyheter24&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/noje/allm%C3%A4nt/skrapade-fram-100-000-kronor-i-tv4-f%C3%A5r-inte-beh%C3%A5lla-vinsten/ar-AA293z58\nE               - text: Skrapade fram 100 000 kronor i TV4 \u2013 f\u00e5r inte beh\u00e5lla vinsten\nE             - button &amp;quot;58 Gillar&amp;quot;\nE             - button &amp;quot;69 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article:\nE             - img &amp;quot;F\u00f6rslag p\u00e5 visningslista&amp;quot;\nE             - link &amp;quot;F\u00f6rslag p\u00e5 visningslista&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?ocid=BingHp01\nE               - heading &amp;quot;F\u00f6rslag p\u00e5 visningslista&amp;quot; [level=2]\nE             - button &amp;quot;Fler alternativ&amp;quot;\nE             - link &amp;quot;EUR/SEK Euro/Sverige, krona \u200e\u22120,25%\u200e 10,9531&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?id=av91zr&amp;amp;ocid=BingHp01\nE               - text: EUR/SEK Euro/Sverige, krona \u200e\u22120,25%\u200e 10,9531\nE               - button &amp;quot;L\u00e4gg i listan&amp;quot;:\nE                 - img\nE             - link &amp;quot;USD/SEK USA, dollar/Sverige, krona \u200e\u22120,25%\u200e 9,5021&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?id=avyt52&amp;amp;ocid=BingHp01\nE               - text: USD/SEK USA, dollar/Sverige, krona \u200e\u22120,25%\u200e 9,5021\nE               - button &amp;quot;L\u00e4gg i listan&amp;quot;:\nE                 - img\nE             - link &amp;quot;SAAB Aktiebolag SAAB B \u200e+1,12%\u200e 597,90&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?id=amx6r7&amp;amp;ocid=BingHp01\nE               - text: SAAB Aktiebolag SAAB B \u200e+1,12%\u200e 597,90\nE               - button &amp;quot;L\u00e4gg i listan&amp;quot;:\nE                 - img\nE             - link &amp;quot;NVIDIA CORPORATION NVDA \u200e+2,93%\u200e 200,75&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?id=a1yv52&amp;amp;ocid=BingHp01\nE               - text: NVIDIA CORPORATION NVDA \u200e+2,93%\u200e 200,75\nE               - button &amp;quot;L\u00e4gg i listan&amp;quot;:\nE                 - img\nE             - link &amp;quot;SEK/NOK Sverige, krona /Norge, krone \u200e\u22120,61%\u200e 0,9926&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?id=avut7w&amp;amp;ocid=BingHp01\nE               - text: SEK/NOK Sverige, krona /Norge, krone \u200e\u22120,61%\u200e 0,9926\nE               - button &amp;quot;L\u00e4gg i listan&amp;quot;:\nE                 - img\nE             - button &amp;quot;F\u00f6reg\u00e5ende&amp;quot;\nE             - tablist:\nE               - tab &amp;quot;tab-0&amp;quot; [selected]\nE               - tab &amp;quot;tab-1&amp;quot;\nE               - tab &amp;quot;tab-2&amp;quot;\nE             - button &amp;quot;N\u00e4sta&amp;quot;\nE             - link &amp;quot;Se f\u00f6rslag p\u00e5 visningslistor&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/bevakningslista?ocid=BingHp01\nE           - article:\nE             - heading &amp;quot;Toppber\u00e4ttelser&amp;quot; [level=2]\nE             - button &amp;quot;Fler alternativ&amp;quot;\nE             - list:\nE               - listitem:\nE                 - link &amp;quot;TT Nyhetsbyr\u00e5n 3 tim Tre d\u00f6da i misst\u00e4nkt bombd\u00e5d i Moskva&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/nyheter/other/tre-d\u00f6da-i-misst\u00e4nkt-bombd\u00e5d-i-moskva/ar-AA29dFZH\nE               - listitem:\nE                 - link &amp;quot;Nyheter24 1 tim Varnar f\u00f6r extremhetta i Italien&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/vader/extrema-v\u00e4derh\u00e4ndelser/varnar-f\u00f6r-extremhetta-i-italien/ar-AA29dgTk\nE               - listitem:\nE                 - link &amp;quot;Dagens PS 15 tim FIFA backar ur \u2013 ska inte l\u00e4ngre s\u00e4lja fotbolls-VM&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/nyheter/other/fifa-backar-ur-ska-inte-l\u00e4ngre-s\u00e4lja-fotbolls-vm/ar-AA29bO4o\nE             - button &amp;quot;F\u00f6reg\u00e5ende&amp;quot;\nE             - tablist:\nE               - tab &amp;quot;tab-0&amp;quot; [selected]\nE               - tab &amp;quot;tab-1&amp;quot;\nE               - tab &amp;quot;tab-2&amp;quot;\nE             - button &amp;quot;N\u00e4sta&amp;quot;\nE           - article &amp;quot;Kungens ok\u00e4nda systerdotter bryter tystnaden \u2013 avsl\u00f6jar allt&amp;quot;:\nE             - text: Allt Om Kungligt 11 tim\nE             - link &amp;quot;Kungens ok\u00e4nda systerdotter bryter tystnaden \u2013 avsl\u00f6jar allt, Allt Om Kungligt&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/nyheter/other/kungens-ok%C3%A4nda-systerdotter-bryter-tystnaden-avsl%C3%B6jar-allt/ar-AA29bVqW\nE               - text: Kungens ok\u00e4nda systerdotter bryter tystnaden \u2013 avsl\u00f6jar allt\nE             - button &amp;quot;19 Gillar&amp;quot;\nE             - button &amp;quot;10 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - &amp;#x27;article &amp;quot;Jill Johnsons f\u00f6rsta ord om sjukdomen \u2013 f\u00e5tt besked fr\u00e5n l\u00e4kare: \\&amp;quot;S\u00e5 ledsamt\\&amp;quot;&amp;quot;&amp;#x27;:\nE             - text: H\u00e4nt 2 d\nE             - &amp;#x27;link &amp;quot;Jill Johnsons f\u00f6rsta ord om sjukdomen \u2013 f\u00e5tt besked fr\u00e5n l\u00e4kare: \\&amp;quot;S\u00e5 ledsamt\\&amp;quot;, H\u00e4nt&amp;quot;&amp;#x27;:\nE               - /url: https://www.msn.com/sv-se/noje/allm%C3%A4nt/jill-johnsons-f%C3%B6rsta-ord-om-sjukdomen-f%C3%A5tt-besked-fr%C3%A5n-l%C3%A4kare-s%C3%A5-ledsamt/ar-AA294r7k\nE               - text: &amp;quot;Jill Johnsons f\u00f6rsta ord om sjukdomen \u2013 f\u00e5tt besked fr\u00e5n l\u00e4kare: \\&amp;quot;S\u00e5 ledsamt\\&amp;quot;&amp;quot;\nE             - button &amp;quot;33 Gillar&amp;quot;\nE             - button &amp;quot;29 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Fr\u00e5n bortgl\u00f6md till Europas hetaste \u2013 nu vallf\u00e4rdar turister till s\u00f6mnhuvudstaden&amp;quot;:\nE             - text: Dagens.se 1 d\nE             - link &amp;quot;Fr\u00e5n bortgl\u00f6md till Europas hetaste \u2013 nu vallf\u00e4rdar turister till s\u00f6mnhuvudstaden, Dagens.se&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/resor/europa-resor/fr%C3%A5n-bortgl%C3%B6md-till-europas-hetaste-nu-vallf%C3%A4rdar-turister-till-s%C3%B6mnhuvudstaden/ar-AA299r2l\nE               - text: Fr\u00e5n bortgl\u00f6md till Europas hetaste \u2013 nu vallf\u00e4rdar turister till s\u00f6mnhuvudstaden\nE             - button &amp;quot;3 Gillar&amp;quot;\nE             - button &amp;quot;2 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;D\u00e4rf\u00f6r ropas vissa passagerare upp vid gaten \u2013 flygv\u00e4rdinnan avsl\u00f6jar sanningen&amp;quot;:\nE             - text: Dagens PS 1 d\nE             - link &amp;quot;D\u00e4rf\u00f6r ropas vissa passagerare upp vid gaten \u2013 flygv\u00e4rdinnan avsl\u00f6jar sanningen, Dagens PS&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/ekonomi/d%C3%A4rf%C3%B6r-ropas-vissa-passagerare-upp-vid-gaten-flygv%C3%A4rdinnan-avsl%C3%B6jar-sanningen/ar-AA2969sD\nE               - text: D\u00e4rf\u00f6r ropas vissa passagerare upp vid gaten \u2013 flygv\u00e4rdinnan avsl\u00f6jar sanningen\nE             - button &amp;quot;19 Gillar&amp;quot;\nE             - button &amp;quot;15 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article:\nE             - link &amp;quot;Stockholms l\u00e4n&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/prognos/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;content=AQICard_wxaqi\nE               - heading &amp;quot;Stockholms l\u00e4n&amp;quot; [level=2]\nE             - button &amp;quot;Min position&amp;quot;\nE             - button &amp;quot;Fler alternativ&amp;quot;\nE             - link &amp;quot;Klart&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/prognos/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;content=AQICard_wxaqi\nE               - img &amp;quot;Klart&amp;quot;\nE             - link &amp;quot;12\u00b0C&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/prognos/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;content=AQICard_wxaqi\nE               - text: \u200e12\u200e \u200e\u00b0C\u200e\nE             - link &amp;quot;Diskret luftkvalitet&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/prognos/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;fcsttab=airquality\nE             - link &amp;quot;Se hela prognosen&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/prognos/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;fcsttab=airquality\nE               - img &amp;quot;arrow&amp;quot;\nE             - link &amp;quot;St\u00f6rre karta&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/vaderkartor/airquality/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;content=AQICard_wxaqi&amp;amp;zoom=8\nE             - link &amp;quot;Kontrollera den globala luftkvaliteten&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/vader/vaderkartor/airquality/in-Stockholms-l%C3%A4n,Sverige?loc=eyJyIjoiU3RvY2tob2xtcyBsw6RuIiwiYyI6IlN2ZXJpZ2UiLCJpIjoiU0UiLCJnIjoic3Ytc2UiLCJ4IjoxOC4wNTU5OTk3NTU4NTkzNzUsInkiOjU5LjMyNTAwMDc2MjkzOTQ1fQ%3D%3D&amp;amp;weadegreetype=C&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;content=AQICard_wxaqi&amp;amp;zoom=8\nE             - button &amp;quot;Se hela prognosen&amp;quot;\nE           - article &amp;quot;Tre d\u00f6da i explosion vid kaf\u00e9 i Moskva&amp;quot;:\nE             - text: TT Nyhetsbyr\u00e5n 5 tim\nE             - link &amp;quot;Tre d\u00f6da i explosion vid kaf\u00e9 i Moskva, TT Nyhetsbyr\u00e5n&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/nyheter/other/tre-d%C3%B6da-i-explosion-vid-kaf%C3%A9-i-moskva/ar-AA29dbvC\nE               - text: Tre d\u00f6da i explosion vid kaf\u00e9 i Moskva\nE             - button &amp;quot;5 Gillar&amp;quot;\nE             - button &amp;quot;Gillar inte&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Ger du pengar till ditt vuxna barn? H\u00e4r g\u00e5r gr\u00e4nsen&amp;quot;:\nE             - text: Nyheter24 1 v\nE             - link &amp;quot;Ger du pengar till ditt vuxna barn? H\u00e4r g\u00e5r gr\u00e4nsen, Nyheter24&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/allm%C3%A4nt/ger-du-pengar-till-ditt-vuxna-barn-h%C3%A4r-g%C3%A5r-gr%C3%A4nsen/ar-AA28dVuc\nE               - text: Ger du pengar till ditt vuxna barn? H\u00e4r g\u00e5r gr\u00e4nsen\nE             - button &amp;quot;12 Gillar&amp;quot;\nE             - button &amp;quot;15 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;F\u00f6rbjudna b\u00f6cker som blev succ\u00e9er p\u00e5 vita duken&amp;quot;:\nE             - text: StarsInsider 2 d\nE             - link &amp;quot;F\u00f6rbjudna b\u00f6cker som blev succ\u00e9er p\u00e5 vita duken, StarsInsider&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/noje/allm%C3%A4nt/f%C3%B6rbjudna-b%C3%B6cker-som-blev-succ%C3%A9er-p%C3%A5-vita-duken/ss-AA22kvDn\nE               - text: F\u00f6rbjudna b\u00f6cker som blev succ\u00e9er p\u00e5 vita duken\nE             - button &amp;quot;6 Gillar&amp;quot;\nE             - button &amp;quot;6 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article:\nE             - link &amp;quot;Spel&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/play?ocid=msedgntp&amp;amp;cgfrom=cg_ntp_sd_cardtitle\nE               - heading &amp;quot;Spel&amp;quot; [level=2]\nE             - button &amp;quot;Fler alternativ&amp;quot;\nE             - list:\nE               - listitem:\nE                 - link &amp;quot;LuckyBlocks.io&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/luckyblocksio/cg-9nn8cw6lctxj?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;LuckyBlocks.io&amp;quot;\nE               - listitem:\nE                 - link &amp;quot;Piece of Cake&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/piece-of-cake/cg-9n5mln8fpwg8?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;Piece of Cake&amp;quot;\nE               - listitem:\nE                 - link &amp;quot;bloxd.io&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/bloxdio/cg-9p0rj8ffrg7h?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;bloxd.io&amp;quot;\nE               - listitem:\nE                 - link &amp;quot;Mergest Kingdom&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/mergest-kingdom/cg-9pc19rxfzl82?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;Mergest Kingdom&amp;quot;\nE               - listitem:\nE                 - link &amp;quot;TapTap Arrow&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/taptap-arrow/cg-9ng0c12cnfsk?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;TapTap Arrow&amp;quot;\nE               - listitem:\nE                 - link &amp;quot;Solitaire Mahjong Classic&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/solitaire-mahjong-classic/cg-9p3m290dfqkb?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;Solitaire Mahjong Classic&amp;quot;\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Car Destruction King: Mayhem&amp;quot;&amp;#x27;:\nE                   - /url: https://www.msn.com/sv-se/play/games/car-destruction-king-mayhem/cg-9pgbzt0smwg4?cgfrom=cg_ntp_sd_cardgameitem_trending&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - &amp;#x27;img &amp;quot;Car Destruction King: Mayhem&amp;quot;&amp;#x27;\nE               - listitem:\nE                 - &amp;#x27;link &amp;quot;Idol Livestream: Doll Dress Up&amp;quot;&amp;#x27;:\nE                   - /url: https://www.msn.com/sv-se/play/games/idol-livestream-doll-dress-up/cg-9nvf53gxpx1x?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - &amp;#x27;img &amp;quot;Idol Livestream: Doll Dress Up&amp;quot;&amp;#x27;\nE               - listitem:\nE                 - link &amp;quot;Merge Haven&amp;quot;:\nE                   - /url: https://www.msn.com/sv-se/play/games/merge-haven/cg-9nv74hgpzr0n?cgfrom=cg_ntp_sd_cardgameitem&amp;amp;ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c&amp;amp;ei=6\nE                   - img &amp;quot;Merge Haven&amp;quot;\nE             - button &amp;quot;F\u00f6reg\u00e5ende&amp;quot;\nE             - tablist:\nE               - tab &amp;quot;tab-0&amp;quot; [selected]\nE               - tab &amp;quot;tab-1&amp;quot;\nE               - tab &amp;quot;tab-2&amp;quot;\nE               - tab &amp;quot;tab-3&amp;quot;\nE               - tab &amp;quot;tab-4&amp;quot;\nE               - tab &amp;quot;tab-5&amp;quot;\nE               - tab &amp;quot;tab-6&amp;quot;\nE               - tab &amp;quot;tab-7&amp;quot;\nE               - tab &amp;quot;tab-8&amp;quot;\nE             - button &amp;quot;N\u00e4sta&amp;quot;\nE             - link &amp;quot;Utforska fler spel&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/play?ocid=msedgntp&amp;amp;cgfrom=cg_ntp_sd_cardseemore\nE           - article &amp;quot;Programledaren \u00e4r d\u00f6d \u2013 drabbats av stroke&amp;quot;:\nE             - text: H\u00e4nt 5 tim\nE             - link &amp;quot;Programledaren \u00e4r d\u00f6d \u2013 drabbats av stroke, H\u00e4nt&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/noje/musik/programledaren-%C3%A4r-d%C3%B6d-drabbats-av-stroke/ar-AA29bWy7\nE               - text: Programledaren \u00e4r d\u00f6d \u2013 drabbats av stroke\nE             - button &amp;quot;3 Gillar&amp;quot;\nE             - button &amp;quot;2 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Ryssarnas sommarsemester krossad \u2013 utlandsresor har blivit en lyx&amp;quot;:\nE             - text: Realtid.se 17 tim\nE             - link &amp;quot;Ryssarnas sommarsemester krossad \u2013 utlandsresor har blivit en lyx, Realtid.se&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/ekonomi/allm%C3%A4nt/ryssarnas-sommarsemester-krossad-utlandsresor-har-blivit-en-lyx/ar-AA29blfS\nE               - text: Ryssarnas sommarsemester krossad \u2013 utlandsresor har blivit en lyx\nE             - button &amp;quot;37 Gillar&amp;quot;\nE             - button &amp;quot;5 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - &amp;#x27;article &amp;quot;Kaffe\u00e4lskare kan andas ut: Fem koppar om dagen kan vara bra f\u00f6r hj\u00e4rtat&amp;quot;&amp;#x27;:\nE             - text: Dagens.se 6 d\nE             - &amp;#x27;link &amp;quot;Kaffe\u00e4lskare kan andas ut: Fem koppar om dagen kan vara bra f\u00f6r hj\u00e4rtat, Dagens.se&amp;quot;&amp;#x27;:\nE               - /url: https://www.msn.com/sv-se/halsa/diet/kaffe%C3%A4lskare-kan-andas-ut-fem-koppar-om-dagen-kan-vara-bra-f%C3%B6r-hj%C3%A4rtat/ar-AA28Iygl\nE               - text: &amp;quot;Kaffe\u00e4lskare kan andas ut: Fem koppar om dagen kan vara bra f\u00f6r hj\u00e4rtat&amp;quot;\nE             - button &amp;quot;20 Gillar&amp;quot;\nE             - button &amp;quot;6 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article:\nE             - img &amp;quot;Allsvenskan&amp;quot;\nE             - link &amp;quot;Allsvenskan&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/sport/fotboll/allsvenskan?ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c\nE               - heading &amp;quot;Allsvenskan&amp;quot; [level=2]\nE             - button &amp;quot;Popul\u00e4rt i omr\u00e5det&amp;quot;\nE             - button &amp;quot;Fler alternativ&amp;quot;\nE             - link &amp;quot;H\u00e4cken Slut \u00b7 1 aug. 1 - 1 Kalmar&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/sport/fotboll/allsvenskan/spel-center/sp-id-67126670?ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c\nE               - button &amp;quot;Klicka f\u00f6r att f\u00f6lja H\u00e4cken&amp;quot;:\nE                 - img\nE               - text: H\u00e4cken Slut \u00b7 1 aug. 1 - 1\nE               - button &amp;quot;Klicka f\u00f6r att f\u00f6lja Kalmar&amp;quot;:\nE                 - img\nE               - text: Kalmar\nE             - link &amp;quot;Brommapojkarna 14:00 2 aug. Malm\u00f6&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/sport/fotboll/allsvenskan/spel-center/sp-id-67126674?ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c\nE               - button &amp;quot;Klicka f\u00f6r att f\u00f6lja Brommapojkarna&amp;quot;:\nE                 - img\nE               - text: Brommapojkarna 14:00 2 aug.\nE               - button &amp;quot;Klicka f\u00f6r att f\u00f6lja Malm\u00f6&amp;quot;:\nE                 - img\nE               - text: Malm\u00f6\nE             - link &amp;quot;G\u00f6teborg 14:00 2 aug. Degerfors IF&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/sport/fotboll/allsvenskan/spel-center/sp-id-67126666?ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c\nE               - button &amp;quot;Klicka f\u00f6r att f\u00f6lja G\u00f6teborg&amp;quot;:\nE                 - img\nE               - text: G\u00f6teborg 14:00 2 aug.\nE               - button &amp;quot;Klicka f\u00f6r att f\u00f6lja Degerfors IF&amp;quot;:\nE                 - img\nE               - text: Degerfors IF\nE             - button &amp;quot;F\u00f6reg\u00e5ende&amp;quot;\nE             - tablist:\nE               - tab &amp;quot;tab-0&amp;quot; [selected]\nE               - tab &amp;quot;tab-1&amp;quot;\nE               - tab &amp;quot;tab-2&amp;quot;\nE               - tab &amp;quot;tab-3&amp;quot;\nE               - tab &amp;quot;tab-4&amp;quot;\nE               - tab &amp;quot;tab-5&amp;quot;\nE               - tab &amp;quot;tab-6&amp;quot;\nE               - tab &amp;quot;tab-7&amp;quot;\nE               - tab &amp;quot;tab-8&amp;quot;\nE               - tab &amp;quot;tab-9&amp;quot;\nE               - tab &amp;quot;tab-10&amp;quot;\nE             - button &amp;quot;N\u00e4sta&amp;quot;\nE             - link &amp;quot;Visa mer Allsvenskan&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/sport/fotboll/allsvenskan?ocid=BingHp01&amp;amp;cvid=ff919d106cf944548a87999c509cf08c\nE           - article &amp;quot;Svenskarna utser landet med s\u00e4mst mat \u2013 h\u00e4r \u00e4r listan&amp;quot;:\nE             - text: Nyheter24 5 d\nE             - link &amp;quot;Svenskarna utser landet med s\u00e4mst mat \u2013 h\u00e4r \u00e4r listan, Nyheter24&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/mat-och-dryck/allm%C3%A4nt/svenskarna-utser-landet-med-s%C3%A4mst-mat-h%C3%A4r-%C3%A4r-listan/ar-AA28MnvQ\nE               - text: Svenskarna utser landet med s\u00e4mst mat \u2013 h\u00e4r \u00e4r listan\nE             - button &amp;quot;18 Gillar&amp;quot;\nE             - button &amp;quot;12 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Putins soldater m\u00f6ter en ny skr\u00e4ckinjagande fiende \u2013 och det \u00e4r inte Ukraina&amp;quot;:\nE             - text: Det Milit\u00e4rprogrammet\nE             - link &amp;quot;Putins soldater m\u00f6ter en ny skr\u00e4ckinjagande fiende \u2013 och det \u00e4r inte Ukraina, Det Milit\u00e4rprogrammet&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/nyheter/other/putins-soldater-m%C3%B6ter-en-ny-skr%C3%A4ckinjagande-fiende-och-det-%C3%A4r-inte-ukraina/vi-AA26pEed\nE               - text: Putins soldater m\u00f6ter en ny skr\u00e4ckinjagande fiende \u2013 och det \u00e4r inte Ukraina\nE             - button &amp;quot;179 Gillar&amp;quot;\nE             - button &amp;quot;104 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - &amp;#x27;article &amp;quot;Oprah Winfrey avsl\u00f6jar: Hennes f\u00f6delsenamn var ursprungligen Orpah&amp;quot;&amp;#x27;:\nE             - text: Dagens.se 9 tim\nE             - &amp;#x27;link &amp;quot;Oprah Winfrey avsl\u00f6jar: Hennes f\u00f6delsenamn var ursprungligen Orpah, Dagens.se&amp;quot;&amp;#x27;:\nE               - /url: https://www.msn.com/sv-se/noje/k%C3%A4ndisar/oprah-winfrey-avsl%C3%B6jar-hennes-f%C3%B6delsenamn-var-ursprungligen-orpah/ar-AA29cDN3\nE               - text: &amp;quot;Oprah Winfrey avsl\u00f6jar: Hennes f\u00f6delsenamn var ursprungligen Orpah&amp;quot;\nE             - button &amp;quot;2 Gillar&amp;quot;\nE             - button &amp;quot;3 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Sopranos-sk\u00e5despelaren Vincent Pastore \u00e4r d\u00f6d&amp;quot;:\nE             - text: TT Nyhetsbyr\u00e5n 3 tim\nE             - link &amp;quot;Sopranos-sk\u00e5despelaren Vincent Pastore \u00e4r d\u00f6d, TT Nyhetsbyr\u00e5n&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/noje/k%C3%A4ndisar/sopranos-sk%C3%A5despelaren-vincent-pastore-%C3%A4r-d%C3%B6d/ar-AA29dgkM\nE               - text: Sopranos-sk\u00e5despelaren Vincent Pastore \u00e4r d\u00f6d\nE             - button &amp;quot;3 Gillar&amp;quot;\nE             - button &amp;quot;1 Gillar inte&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;20 \u00e5r gammal Volvo sl\u00e5r nya bilar i ov\u00e4ntat test&amp;quot;:\nE             - text: Nyheter24 3 v\nE             - link &amp;quot;20 \u00e5r gammal Volvo sl\u00e5r nya bilar i ov\u00e4ntat test, Nyheter24&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/motor/allm%C3%A4nt/20-%C3%A5r-gammal-volvo-sl%C3%A5r-nya-bilar-i-ov%C3%A4ntat-test/ar-AA27GxJr\nE               - text: 20 \u00e5r gammal Volvo sl\u00e5r nya bilar i ov\u00e4ntat test\nE             - button &amp;quot;74 Gillar&amp;quot;\nE             - button &amp;quot;10 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - &amp;#x27;article &amp;quot;M\u00e5nga kvinnor i 50-\u00e5rs\u00e5ldern inser det f\u00f6r sent: Relationens tysta varningssignal&amp;quot;&amp;#x27;:\nE             - text: Dagens.se 1 v\nE             - &amp;#x27;link &amp;quot;M\u00e5nga kvinnor i 50-\u00e5rs\u00e5ldern inser det f\u00f6r sent: Relationens tysta varningssignal, Dagens.se&amp;quot;&amp;#x27;:\nE               - /url: https://www.msn.com/sv-se/livsstil/other/m%C3%A5nga-kvinnor-i-50-%C3%A5rs%C3%A5ldern-inser-det-f%C3%B6r-sent-relationens-tysta-varningssignal/ar-AA28tbMk\nE               - text: &amp;quot;M\u00e5nga kvinnor i 50-\u00e5rs\u00e5ldern inser det f\u00f6r sent: Relationens tysta varningssignal&amp;quot;\nE             - button &amp;quot;12 Gillar&amp;quot;\nE             - button &amp;quot;41 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Martin Stenmarcks ov\u00e4ntade besked \u2013 tvingas till krisdrag efter sjukdomen&amp;quot;:\nE             - text: H\u00e4nt 8 tim\nE             - link &amp;quot;Martin Stenmarcks ov\u00e4ntade besked \u2013 tvingas till krisdrag efter sjukdomen, H\u00e4nt&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/noje/allm%C3%A4nt/martin-stenmarcks-ov%C3%A4ntade-besked-tvingas-till-krisdrag-efter-sjukdomen/ar-AA29cR3Q\nE               - text: Martin Stenmarcks ov\u00e4ntade besked \u2013 tvingas till krisdrag efter sjukdomen\nE             - button &amp;quot;1 Gillar&amp;quot;\nE             - button &amp;quot;1 Gillar inte&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE           - article &amp;quot;Ska du flyga med barn? H\u00e4r kan du tvingas betala extra&amp;quot;:\nE             - text: Nyheter24 3 d\nE             - link &amp;quot;Ska du flyga med barn? H\u00e4r kan du tvingas betala extra, Nyheter24&amp;quot;:\nE               - /url: https://www.msn.com/sv-se/resor/allm%C3%A4nt/ska-du-flyga-med-barn-h%C3%A4r-kan-du-tvingas-betala-extra/ar-AA28YyNA\nE               - text: Ska du flyga med barn? H\u00e4r kan du tvingas betala extra\nE             - button &amp;quot;2 Gillar&amp;quot;\nE             - button &amp;quot;5 Ogillar&amp;quot;\nE             - button &amp;quot;D\u00f6lj artikeln&amp;quot;\nE             - button &amp;quot;Visa mer&amp;quot;\nE       - contentinfo:\nE         - text: \u00a9 2026 Microsoft\nE         - list:\nE           - listitem:\nE             - link &amp;quot;Privacy and Cookies&amp;quot;:\nE               - /url: //go.microsoft.com/fwlink/?LinkId=521839\nE           - listitem:\nE             - link &amp;quot;Legal&amp;quot;:\nE               - /url: //go.microsoft.com/fwlink/?LinkID=246338\nE           - listitem:\nE             - link &amp;quot;Advertise&amp;quot;:\nE               - /url: //go.microsoft.com/fwlink/?linkid=868923\nE           - listitem:\nE             - link &amp;quot;About our ads&amp;quot;:\nE               - /url: //go.microsoft.com/fwlink/?LinkID=286759\nE           - listitem:\nE             - link &amp;quot;Help&amp;quot;:\nE               - /url: //support.microsoft.com/topic/82d20721-2d6f-4012-a13d-d1910ccf203f\nE           - listitem:\nE             - link &amp;quot;Feedback&amp;quot;:\nE               - /url: &amp;quot;#&amp;quot;\nE           - listitem:\nE             - link &amp;quot;European Data Protection&amp;quot;:\nE               - /url: http://help.bing.microsoft.com/#apex/18/en-GB/10013/-1/en-GB\nE           - listitem: Manage Cookie Preferences\n\ntest_sample.py:17: AssertionError\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;report_2026-08-02_02-47-12.html&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > .col-result')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > .col-result')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+  </body>
+</html>
